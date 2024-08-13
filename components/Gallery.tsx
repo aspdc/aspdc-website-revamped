@@ -19,15 +19,12 @@ const ImageCard = ({ img }: { img: string }) => {
         <figure
             className={cn(
                 "relative size-96 cursor-pointer overflow-hidden rounded-xl border", // Changed from size-64 to size-96
-                // light styles
                 "border-gray-950/[.1] bg-gray-950/[.01] hover:bg-gray-950/[.05]",
-                // dark styles
                 "dark:border-gray-50/[.1] dark:bg-gray-50/[.10] dark:hover:bg-gray-50/[.15]"
             )}
         >
             <div className="flex flex-row items-center gap-2">
                 <img alt="" src={img} className="w-full h-full object-cover" />{" "}
-                // Added object-cover to ensure the image fills the container
             </div>
         </figure>
     );
