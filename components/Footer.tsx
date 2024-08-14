@@ -50,23 +50,23 @@ export default function Footer() {
                     <div className="flex gap-4 relative">
                         <SocialIcon
                             Icon={IoLogoInstagram}
-                            link="https://instagram.com"
+                            link="https://www.instagram.com/aspd.club/"
                         />
                         <SocialIcon
                             Icon={FaXTwitter}
-                            link="https://twitter.com"
+                            link="https://x.com/aspdc_club"
                         />
                         <SocialIcon
                             Icon={FaDiscord}
-                            link="https://discord.com"
+                            link="https://discord.com/invite/QbrJNMTzUj"
                         />
                         <SocialIcon
                             Icon={IoLogoLinkedin}
-                            link="https://linkedin.com"
+                            link="https://www.linkedin.com/company/adani-student-programming-and-development-club/"
                         />
                         <SocialIcon
                             Icon={FaYoutube}
-                            link="https://youtube.com"
+                            link="https://www.youtube.com/@clubaspd"
                         />
                         <EmojiConfetti />
                     </div>

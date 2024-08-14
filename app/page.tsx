@@ -1,5 +1,3 @@
-import Footer from "@/components/Footer";
-import Navbar from "@/components/ui/Navbar";
 import Hero from "@/components/Hero";
 import AboutUs from "@/components/AboutUs";
 import EventShowcase from "@/components/EventShowcase";

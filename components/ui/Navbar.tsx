@@ -34,7 +34,12 @@ const Navbar = ({
                     </span>
                 </Link>
             ))}
-            <button className="border hover:animate-hover-pulse text-sm font-medium relative border-neutral-200 dark:border-white/[0.2] text-black dark:text-white px-4 py-2 rounded-full">
+            <button
+                onClick={() =>
+                    window.open("https://72buefq3vo3.typeform.com/to/Qx4CBhSL")
+                }
+                className="border hover:animate-hover-pulse text-sm font-medium relative border-neutral-200 dark:border-white/[0.2] text-black dark:text-white px-4 py-2 rounded-full"
+            >
                 Suggest an Event
                 <span className="absolute inset-x-0 w-1/2 mx-auto -bottom-px bg-gradient-to-r from-transparent via-green-500 to-transparent  h-px" />
             </button>
