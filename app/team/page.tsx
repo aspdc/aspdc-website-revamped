@@ -145,7 +145,7 @@ const rep_members: Member[] = [
     {
         image: "/tirthchoksi.jpeg",
         name: "Tirth Choksi",
-        position: "Web Devlopment Lead",
+        position: "Web Development Lead",
         instagram: "_tirth_chokshi_05",
     },
     {

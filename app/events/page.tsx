@@ -1,29 +1,22 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
-
 import React from "react";
+
+import { db } from "@/firebase";
+import { collection, getDocs } from "firebase/firestore";
+
 import { MagicCard } from "@/components/magicui/magic-card";
 import { ChevronRight } from "lucide-react";
 import { Calendar } from "lucide-react";
 
-type EventCard = {
+type EventProp = {
     imageUrl: string;
     eventTitle: string;
     eventDate: string;
     eventLink: string;
 };
 
-const events: EventCard[] = [
-    {
-        imageUrl:
-            "https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=2,background=white,quality=75,width=280,height=280/gallery-images/e6/ccbec6f5-0ebf-49b9-9d91-c0d0b487b594",
-        eventTitle: "Biweekly Contest - 002",
-        eventDate: "21st August 2024",
-        eventLink: "https://lu.ma/e82n29m0",
-    },
-];
-
-function EventCard({ imageUrl, eventTitle, eventDate, eventLink }: EventCard) {
+function EventCard({ imageUrl, eventTitle, eventDate, eventLink }: EventProp) {
     return (
         <MagicCard className="flex h-[430px] w-[330px] p-2">
             <div className="h-[70%] bg-red-200 w-[108%] rounded-md">
@@ -54,6 +47,15 @@ function EventCard({ imageUrl, eventTitle, eventDate, eventLink }: EventCard) {
 }
 
 export default function Events() {
+    const [events, setEvents] = React.useState<EventProp[]>([]);
+    React.useEffect(() => {
+        (async () => {
+            const snapshot = await getDocs(collection(db, "events"));
+            const ev = snapshot.docs.map((doc) => doc.data());
+            setEvents(ev as EventProp[]);
+        })();
+    }, []);
+
     return (
         <div className="min-h-screen px-16 py-8 ">
             <h1 className="mt-16 text-4xl font-semibold">Events</h1>
