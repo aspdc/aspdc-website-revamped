@@ -47,9 +47,9 @@ export default function Contact() {
     };
 
     return (
-        <div className="min-h-screen px-16 py-8 ">
+        <div className="min-h-screen px-4 sm:px-8 md:px-16 py-8">
             <motion.h1
-                className="mt-24 text-4xl font-semibold"
+                className="mt-12 sm:mt-24 text-3xl sm:text-4xl font-semibold"
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
@@ -65,7 +65,7 @@ export default function Contact() {
                 Reach out to us for questions, collabs, or just to say &apos;You
                 guys are great&apos;
             </motion.p>
-            <div className="mt-8 flex gap-20">
+            <div className="mt-8 flex flex-col lg:flex-row gap-8 lg:gap-20">
                 <motion.div
                     className="flex-1"
                     initial={{ opacity: 0, x: -50 }}
@@ -87,7 +87,7 @@ export default function Contact() {
                         onChange={handleInputChange}
                     />
                     <label
-                        htmlFor="name"
+                        htmlFor="email"
                         className="text-lg opacity-65 font-medium"
                     >
                         Email
@@ -101,13 +101,13 @@ export default function Contact() {
                         onChange={handleInputChange}
                     />
                     <label
-                        htmlFor="name"
+                        htmlFor="message"
                         className="text-lg opacity-65 font-medium"
                     >
                         Message
                     </label>
                     <Textarea
-                        className="mt-2 border-white/20 bg-transparent focus:border-2 h-[200px] resize-none"
+                        className="mt-2 border-white/20 bg-transparent focus:border-2 h-[150px] sm:h-[200px] resize-none"
                         placeholder="Chin Tapak Dum Dum"
                         name="message"
                         value={formData.message}
@@ -120,7 +120,7 @@ export default function Contact() {
                     >
                         <Button
                             variant="outline"
-                            className="mt-4"
+                            className="mt-4 w-full sm:w-auto"
                             onClick={handleMessage}
                         >
                             Send Message
@@ -128,7 +128,7 @@ export default function Contact() {
                     </motion.div>
                 </motion.div>
                 <motion.div
-                    className="flex-1"
+                    className="flex-1 flex justify-center items-center"
                     initial={{ opacity: 0, x: 50 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.5, delay: 0.2 }}
@@ -136,7 +136,7 @@ export default function Contact() {
                     <img
                         src="https://i.giphy.com/Ri98Ht4Q9hczOeHC1E.webp"
                         alt="Request Form"
-                        className="ml-[15%]"
+                        className="w-full max-w-[300px] lg:max-w-[400px] h-auto"
                     />
                 </motion.div>
             </div>

@@ -6,10 +6,8 @@ import FAQ from "@/components/FAQ";
 
 //TODO
 /*
- * 1. Add on load animation on every page
  * 2. Make pages responsive
  * 3. Create an admin page to handle adding events and all [For later]
- * 4. Clean up and enjoy
  */
 
 export default function Home() {
