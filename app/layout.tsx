@@ -37,6 +37,10 @@ const navItems = [
         link: "/hackathons",
     },
     {
+        name: "Projects",
+        link: "/projects",
+    },
+    {
         name: "Leaderboard",
         link: "/leaderboard",
     },

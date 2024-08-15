@@ -1,9 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import { motion, useInView } from "framer-motion";
 import { FaInstagram, FaTwitter } from "react-icons/fa";
 import { TeamMemberCardProps } from "@/types";
+import FadeInWhenVisible from "@/components/FadeInWhenVisible";
 
 type Member = {
     image: string;
@@ -15,7 +15,7 @@ type Member = {
 
 const core_members: Member[] = [
     {
-        image: "https://api.dicebear.com/9.x/micah/svg?seed=vedant",
+        image: "/vedant.jpeg",
         name: "Vedant Panchal",
         position: "President",
         instagram: "vedant.4044",
@@ -39,10 +39,10 @@ const core_members: Member[] = [
         instagram: "_kunjrani_09",
     },
     {
-        image: "https://api.dicebear.com/9.x/micah/svg?seed=Kushal",
+        image: "/kushal.jpeg",
         name: "Kushal Unjiya",
         position: "Machine Learning Head",
-        twitter: "kushal-unjiya",
+        twitter: "kushal_unjiya",
     },
     {
         image: "https://api.dicebear.com/9.x/micah/svg?seed=Amandeep",
@@ -63,7 +63,7 @@ const core_members: Member[] = [
         instagram: "_ayan_was_here",
     },
     {
-        image: "https://api.dicebear.com/9.x/micah/svg?seed=Om",
+        image: "/om.jpeg",
         name: "Om Kansara",
         position: "Social Media Head",
         instagram: "om.kansara",
@@ -78,13 +78,13 @@ const rep_members: Member[] = [
         instagram: "khush_s_pate",
     },
     {
-        image: "https://api.dicebear.com/9.x/micah/svg?seed=Poojan",
+        image: "/poojan.jpeg",
         name: "Poojan Bhuva",
         position: "DSA & CP Lead",
         instagram: "poojan_bhuva",
     },
     {
-        image: "https://api.dicebear.com/9.x/micah/svg?seed=SPrtham",
+        image: "/pratham.jpeg",
         name: "Pratham Gavadia",
         position: "DSA & CP Lead",
     },
@@ -137,7 +137,7 @@ const rep_members: Member[] = [
         instagram: "het._jethva",
     },
     {
-        image: "https://api.dicebear.com/9.x/micah/svg?seed=Supal",
+        image: "/supal.jpeg",
         name: "Supal Vasani",
         position: "Web Development Lead",
         instagram: "supal__vasani",
@@ -149,9 +149,10 @@ const rep_members: Member[] = [
         instagram: "_tirth_chokshi_05",
     },
     {
-        image: "https://api.dicebear.com/9.x/micah/svg?seed=Shriman",
+        image: "/shriman.jpeg",
         name: "Shriman Dasadiya",
         position: "Web Development Lead",
+        instagram: "shriman_3",
     },
 ];
 

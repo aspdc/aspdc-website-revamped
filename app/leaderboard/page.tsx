@@ -1,15 +1,17 @@
+"use client";
+
 import React from "react";
+import { db } from "@/firebase";
+import { collection, getDocs } from "firebase/firestore";
+import { CrossIcon } from "lucide-react";
 
-const leaderboardData = [
-    { rank: 1, username: "CodeMaster", rating: 2800 },
-    { rank: 2, username: "AlgoQueen", rating: 2750 },
-    { rank: 3, username: "ByteWizard", rating: 2700 },
-    { rank: 4, username: "LogicKing", rating: 2650 },
-    { rank: 5, username: "SyntaxNinja", rating: 2600 },
-    // Add more data as needed
-];
+type leaderboardProp = {
+    rank: number;
+    username: string;
+    rating: number;
+};
 
-const Pedestal = ({ topThree }: any) => (
+const Pedestal = ({ topThree }: { topThree: leaderboardProp[] }) => (
     <div className="mt-16 flex items-end justify-center gap-4" id="pedestal">
         <div className="flex flex-col items-center">
             <div className="w-20 h-24 border rounded-t-md border-[#C0C0C0] flex items-center justify-center text-2xl font-bold">
@@ -68,6 +70,24 @@ const LeaderboardTable = ({ data }: any) => (
 );
 
 export default function Leaderboard() {
+    const [leaderboardData, setLeaderboardData] = React.useState<
+        leaderboardProp[]
+    >([]);
+
+    React.useEffect(() => {
+        (async () => {
+            const snapshot = await getDocs(collection(db, "leaderboard"));
+            const lb = snapshot.docs.map((doc) => doc.data());
+
+            const sortedData = lb.sort((a, b) => b.rating - a.rating);
+            const slb = sortedData.map((user, index) => ({
+                ...user,
+                rank: index + 1,
+            }));
+            setLeaderboardData(slb as leaderboardProp[]);
+        })();
+    }, []);
+
     return (
         <div className="min-h-screen px-4 sm:px-6 lg:px-8 py-8 flex flex-col items-center">
             <h1 className="mt-16 text-4xl font-semibold">Leaderboard</h1>
@@ -75,8 +95,19 @@ export default function Leaderboard() {
                 Watch Our Members Climb the Codeforces Ranks and Dominate the
                 Competitive Coding Scene!
             </p>
-            <Pedestal topThree={leaderboardData.slice(0, 3)} />
-            <LeaderboardTable data={leaderboardData} />
+            {leaderboardData.length > 0 ? (
+                <>
+                    <Pedestal topThree={leaderboardData.slice(0, 3)} />
+                    <LeaderboardTable data={leaderboardData} />
+                </>
+            ) : (
+                <div className="mt-44 text-sm font-medium opacity-75 flex gap-4 items-center">
+                    <CrossIcon className="rotate-45" />
+                    Error Fetching Leaderboard right now. Ping someone that can
+                    help fix this
+                    <CrossIcon className="rotate-45" />
+                </div>
+            )}
         </div>
     );
 }
