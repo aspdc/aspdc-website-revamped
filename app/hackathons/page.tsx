@@ -18,7 +18,7 @@ type HackathonProp = {
 function HackathonCard({ image, name, date, link }: HackathonProp) {
     return (
         <MagicCard className="flex h-[430px] w-[330px] p-2">
-            <div className="h-[70%] bg-red-200 w-[100%] rounded-md">
+            <div className="h-[70%] w-[100%] rounded-md">
                 <img
                     src={image}
                     alt="User Image"

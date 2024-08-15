@@ -19,7 +19,7 @@ type EventProp = {
 function EventCard({ imageUrl, eventTitle, eventDate, eventLink }: EventProp) {
     return (
         <MagicCard className="flex h-[430px] w-[330px] p-2">
-            <div className="h-[70%] bg-red-200 w-[108%] rounded-md">
+            <div className="h-[70%] w-[108%] rounded-md">
                 <img
                     src={imageUrl}
                     alt="User Image"

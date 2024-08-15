@@ -3,7 +3,7 @@ import { ArrowRightIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 import AnimatedShinyText from "@/components/magicui/animated-shiny-text";
 
-export async function AdComponent() {
+export function AdComponent() {
     return (
         <div className="z-10 flex pb-2 items-center justify-center">
             <div

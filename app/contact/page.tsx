@@ -1,9 +1,50 @@
+"use client";
 /* eslint-disable @next/next/no-img-element */
+import React from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { toast } from "sonner";
+import { addDoc, collection } from "firebase/firestore";
+import { db } from "@/firebase";
 
 export default function Contact() {
+    const [formData, setFormData] = React.useState({
+        name: "",
+        email: "",
+        message: "",
+    });
+
+    const handleInputChange = (
+        e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    ) => {
+        const { name, value } = e.target;
+        setFormData({
+            ...formData,
+            [name]: value,
+        });
+    };
+
+    const handleMessage = async () => {
+        if (!formData.name || !formData.email || !formData.message) {
+            toast.error("Please fill in all fields");
+            return;
+        }
+
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(formData.email)) {
+            toast.error("Please enter a valid email address");
+            return;
+        }
+
+        const docRef = await addDoc(collection(db, "contact"), { ...formData });
+        if (docRef.id)
+            toast.success(
+                "Thank you! Your message has been sent successfully."
+            );
+        else toast.error("Oops! Something went wrong. Please try again");
+    };
+
     return (
         <div className="min-h-screen px-16 py-8 ">
             <h1 className="mt-24 text-4xl font-semibold">Get in Touch</h1>
@@ -23,6 +64,9 @@ export default function Contact() {
                         className="mt-2 mb-4 border-white/20 bg-transparent focus:border-2"
                         type="text"
                         placeholder="Peter Parker"
+                        name="name"
+                        value={formData.name}
+                        onChange={handleInputChange}
                     />
                     <label
                         htmlFor="name"
@@ -34,6 +78,9 @@ export default function Contact() {
                         className="mt-2 mb-4 border-white/20 bg-transparent focus:border-2"
                         type="email"
                         placeholder="spiderman@queens.com"
+                        name="email"
+                        value={formData.email}
+                        onChange={handleInputChange}
                     />
                     <label
                         htmlFor="name"
@@ -44,8 +91,15 @@ export default function Contact() {
                     <Textarea
                         className="mt-2 border-white/20 bg-transparent focus:border-2 h-[200px] resize-none"
                         placeholder="Chin Tapak Dum Dum"
+                        name="message"
+                        value={formData.message}
+                        onChange={handleInputChange}
                     />
-                    <Button variant="outline" className="mt-4">
+                    <Button
+                        variant="outline"
+                        className="mt-4"
+                        onClick={handleMessage}
+                    >
                         Send Message
                     </Button>
                 </div>
