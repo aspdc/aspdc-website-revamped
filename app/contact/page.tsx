@@ -1,6 +1,7 @@
 "use client";
 /* eslint-disable @next/next/no-img-element */
 import React from "react";
+import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -47,13 +48,30 @@ export default function Contact() {
 
     return (
         <div className="min-h-screen px-16 py-8 ">
-            <h1 className="mt-24 text-4xl font-semibold">Get in Touch</h1>
-            <p className="text-sm opacity-75 mt-1">
+            <motion.h1
+                className="mt-24 text-4xl font-semibold"
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+            >
+                Get in Touch
+            </motion.h1>
+            <motion.p
+                className="text-sm opacity-75 mt-1"
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.1 }}
+            >
                 Reach out to us for questions, collabs, or just to say &apos;You
                 guys are great&apos;
-            </p>
+            </motion.p>
             <div className="mt-8 flex gap-20">
-                <div className="flex-1">
+                <motion.div
+                    className="flex-1"
+                    initial={{ opacity: 0, x: -50 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.5, delay: 0.2 }}
+                >
                     <label
                         htmlFor="name"
                         className="text-lg opacity-65 font-medium"
@@ -95,21 +113,32 @@ export default function Contact() {
                         value={formData.message}
                         onChange={handleInputChange}
                     />
-                    <Button
-                        variant="outline"
-                        className="mt-4"
-                        onClick={handleMessage}
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5, delay: 0.3 }}
                     >
-                        Send Message
-                    </Button>
-                </div>
-                <div className="flex-1">
+                        <Button
+                            variant="outline"
+                            className="mt-4"
+                            onClick={handleMessage}
+                        >
+                            Send Message
+                        </Button>
+                    </motion.div>
+                </motion.div>
+                <motion.div
+                    className="flex-1"
+                    initial={{ opacity: 0, x: 50 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.5, delay: 0.2 }}
+                >
                     <img
                         src="https://i.giphy.com/Ri98Ht4Q9hczOeHC1E.webp"
                         alt="Request Form"
                         className="ml-[15%]"
                     />
-                </div>
+                </motion.div>
             </div>
         </div>
     );

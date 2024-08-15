@@ -1,9 +1,8 @@
 "use client";
-
 import Image from "next/image";
 import { FaInstagram, FaTwitter } from "react-icons/fa";
 import { TeamMemberCardProps } from "@/types";
-import FadeInWhenVisible from "@/components/FadeInWhenVisible";
+import { motion } from "framer-motion";
 
 type Member = {
     image: string;
@@ -155,16 +154,30 @@ const rep_members: Member[] = [
         instagram: "shriman_3",
     },
 ];
-
 function TeamMemberCard({
     image,
     name,
     position,
     instagram,
     twitter,
-}: TeamMemberCardProps) {
+    index,
+}: TeamMemberCardProps & { index: number }) {
     return (
-        <div className="h-[500px] w-80 rounded-lg border border-white/20 shadow">
+        <motion.div
+            initial={{ opacity: 0, filter: "blur(10px)", y: 50, scale: 0.9 }}
+            whileInView={{
+                opacity: 1,
+                filter: "blur(0px)",
+                y: 0,
+                scale: 1,
+            }}
+            viewport={{ once: true }}
+            transition={{
+                duration: 0.5,
+                delay: index * 0.1,
+            }}
+            className="h-[500px] w-80 rounded-lg border border-white/20 shadow"
+        >
             <div className="h-[85%] p-4">
                 <Image
                     src={image}
@@ -202,21 +215,50 @@ function TeamMemberCard({
                     )}
                 </div>
             </div>
-        </div>
+        </motion.div>
     );
 }
 
 export default function Team() {
     return (
         <div className="px-16 py-8 min-h-screen">
-            <h1 className="text-4xl font-semibold mt-16">Core Team</h1>
-            <p className="opacity-50">
-                The masterminds who drive the vision and execution of our club’s
-                initiatives.
-            </p>
+            <motion.h1
+                className="text-4xl font-semibold mt-16"
+                initial={{
+                    opacity: 0,
+                    filter: "blur(10px)",
+                }}
+                animate={{
+                    opacity: 1,
+                    filter: "blur(0px)",
+                }}
+                transition={{
+                    duration: 0.5,
+                }}
+            >
+                Core Team
+            </motion.h1>
+            <motion.p
+                className="opacity-50"
+                initial={{
+                    opacity: 0,
+                    filter: "blur(10px)",
+                }}
+                animate={{
+                    opacity: 1,
+                    filter: "blur(0px)",
+                }}
+                transition={{
+                    delay: 0.2,
+                    duration: 0.5,
+                }}
+            >
+                The masterminds who drive the vision and execution of our
+                club&apos;s initiatives.
+            </motion.p>
 
             <div className="mt-8 lg:grid grid-cols-4 gap-y-8 mb-20">
-                {core_members.map((member) => (
+                {core_members.map((member, index) => (
                     <TeamMemberCard
                         key={member.position}
                         image={member.image}
@@ -224,19 +266,49 @@ export default function Team() {
                         instagram={member.instagram}
                         twitter={member.twitter}
                         position={member.position}
+                        index={index}
                     />
                 ))}
             </div>
-            <h1 className="text-4xl font-semibold mt-16">
+            <motion.h1
+                className="text-4xl font-semibold mt-16"
+                initial={{
+                    opacity: 0,
+                    filter: "blur(10px)",
+                }}
+                whileInView={{
+                    opacity: 1,
+                    filter: "blur(0px)",
+                }}
+                viewport={{ once: true }}
+                transition={{
+                    duration: 0.5,
+                }}
+            >
                 Club Representative
-            </h1>
-            <p className="opacity-50">
+            </motion.h1>
+            <motion.p
+                className="opacity-50"
+                initial={{
+                    opacity: 0,
+                    filter: "blur(10px)",
+                }}
+                whileInView={{
+                    opacity: 1,
+                    filter: "blur(0px)",
+                }}
+                viewport={{ once: true }}
+                transition={{
+                    delay: 0.2,
+                    duration: 0.5,
+                }}
+            >
                 The faces that represent our club, bridging the gap between our
                 vision and the broader community.
-            </p>
+            </motion.p>
 
             <div className="mt-8 lg:grid grid-cols-4 gap-y-8 mb-20">
-                {rep_members.map((member) => (
+                {rep_members.map((member, index) => (
                     <TeamMemberCard
                         key={member.position}
                         image={member.image}
@@ -244,6 +316,7 @@ export default function Team() {
                         instagram={member.instagram}
                         twitter={member.twitter}
                         position={member.position}
+                        index={index}
                     />
                 ))}
             </div>
