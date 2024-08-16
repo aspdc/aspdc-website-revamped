@@ -17,7 +17,8 @@ const fontSans = FontSans({
 
 export const metadata: Metadata = {
     title: "ASPDC",
-    description: "Do what you can't",
+    description:
+        "Official Website of Adani Student Programming and Development Club",
 };
 const navItems = [
     {
