@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 "use client";
 
 import { motion, Variants } from "framer-motion";
@@ -6,7 +7,7 @@ import React, { useState } from "react";
 
 interface AccordionItemProps {
     title: string;
-    content: string;
+    content: React.ReactNode;
     isExpanded: boolean;
     onToggle: () => void;
 }
@@ -14,7 +15,7 @@ interface AccordionItemProps {
 interface AccordionProps {
     items: Array<{
         title: string;
-        content: string;
+        content: React.ReactNode;
     }>;
 }
 
@@ -68,9 +69,9 @@ const AccordionItem: React.FC<AccordionItemProps> = ({
                 initial="collapsed"
                 animate={isExpanded ? "expanded" : "collapsed"}
             >
-                <p className="m-0 text-sm text-gray-900 dark:text-gray-100">
+                <div className="m-0 text-sm text-gray-900 dark:text-gray-100">
                     {content}
-                </p>
+                </div>
             </motion.div>
         </motion.div>
     );
@@ -101,38 +102,78 @@ const Accordion: React.FC<AccordionProps> = ({ items }) => {
 const accordionItems = [
     {
         title: "Do I need to be a coding genius to join ASPDC?",
-        content:
-            "Nope! Whether you're a total newbie or a coding wizard, you're welcome here. We're all about learning and growing together.",
+        content: (
+            <p>
+                Nope! Whether you're a total newbie or a coding wizard, you're
+                welcome here. We're all about learning and growing together.
+            </p>
+        ),
     },
     {
         title: "What kind of events does ASPDC organize?",
-        content:
-            "We've got it all! Workshops, hackathons, coding competitions, tech talks, and chill social events. There's always something exciting happening!",
+        content: (
+            <p>
+                We've got it all! Workshops, hackathons, coding competitions,
+                tech talks, and chill social events. There's always something
+                exciting happening!
+            </p>
+        ),
     },
     {
         title: "How can I stay updated on ASPDC events and workshops?",
-        content:
-            "Follow us on social media, join our Discord server or our whatsapp group, We'll keep you in the loop!",
+        content: (
+            <p>
+                Follow us on social media, join our Discord server or our
+                WhatsApp group, We'll keep you in the loop!
+            </p>
+        ),
     },
     {
         title: "I have a project or a blog that I want to showcase on this website",
-        content:
-            "Drop us a message on any of our socials and if it's awesome, we would love to showcase it",
+        content: (
+            <p>
+                Drop us a message on any of our socials and if it's awesome, we
+                would love to showcase it!
+            </p>
+        ),
     },
     {
         title: "Is there a membership fee to join ASPDC?",
-        content:
-            "Nope, it's free to join! We want everyone to have access to learning and opportunities.",
+        content: (
+            <p>
+                Nope, it's free to join! We want everyone to have access to
+                learning and opportunities.
+            </p>
+        ),
     },
     {
         title: "How to be part of the ASPDC Core Team?",
-        content:
-            "We're always looking for passionate and dedicated members to join the core team. Keep an eye out for announcements and apply when we're recruiting!",
+        content: (
+            <p>
+                We're always looking for passionate and dedicated members to
+                join the core team. Keep an eye out for announcements and apply
+                when we're recruiting! If you just can't wait, just fill out
+                this{" "}
+                <a
+                    href="https://72buefq3vo3.typeform.com/to/GfY7emQ2"
+                    className="text-blue-500 hover:underline"
+                    target="_blank"
+                >
+                    form
+                </a>
+                .
+            </p>
+        ),
     },
     {
         title: "I have an idea for a workshop or event. How can I share it?",
-        content:
-            "We'd love to hear your ideas! Drop us a message on social media or in our Discord server. We're always looking for new ideas and fresh perspectives.",
+        content: (
+            <p>
+                We'd love to hear your ideas! Drop us a message on social media
+                or in our Discord server. We're always looking for new ideas and
+                fresh perspectives.
+            </p>
+        ),
     },
 ];
 
