@@ -57,12 +57,14 @@ export default function Hero() {
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5, delay: 0.5 }}
             >
-                <ShimmerButton>
+                <ShimmerButton onClick={() => window.open("/events", "_self")}>
                     <span className="flex items-center gap-1 whitespace-pre-wrap text-center text-sm font-medium leading-none tracking-tight text-white dark:from-white dark:to-slate-900/10">
                         <Calendar className="h-[1.5cap]" /> Events
                     </span>
                 </ShimmerButton>
-                <ShimmerButton>
+                <ShimmerButton
+                    onClick={() => window.open("/leaderboard", "_self")}
+                >
                     <span className="flex items-center gap-1 whitespace-pre-wrap text-center text-sm font-medium leading-none tracking-tight text-white dark:from-white dark:to-slate-900/10">
                         <Gem className="h-[1.5cap]" /> Leaderboard
                     </span>

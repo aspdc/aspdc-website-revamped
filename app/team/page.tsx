@@ -88,22 +88,11 @@ const rep_members: Member[] = [
     },
     {
         image: "/shivam.jpeg",
-        name: "Shivam Markhendey",
+        name: "Shivam Markanday",
         position: "DSA & CP Lead",
         instagram: "shivam_markanday",
     },
-    {
-        image: "/deep.jpeg",
-        name: "Deep Adatiya",
-        position: "Public Relations",
-        instagram: "deep.9549",
-    },
-    {
-        image: "/priyanshi.jpeg",
-        name: "Priyanshi Naghera",
-        position: "Public Relations",
-        instagram: "prea.yanshie",
-    },
+
     {
         image: "/vidhi.jpeg",
         name: "Vidhi Patel",
@@ -130,7 +119,7 @@ const rep_members: Member[] = [
     },
     {
         image: "/het.jpg",
-        name: "Het Jethwa",
+        name: "Het Jethva",
         position: "Web Development Lead",
         instagram: "het._jethva",
     },
@@ -151,6 +140,18 @@ const rep_members: Member[] = [
         name: "Shriman Dasadiya",
         position: "Web Development Lead",
         instagram: "shriman_3",
+    },
+    {
+        image: "/deep.jpeg",
+        name: "Deep Adatiya",
+        position: "Public Relations",
+        instagram: "_deep.9549_",
+    },
+    {
+        image: "/priyanshi.jpeg",
+        name: "Priyanshi Naghera",
+        position: "Public Relations",
+        instagram: "prea.yanshie",
     },
 ];
 

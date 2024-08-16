@@ -113,7 +113,7 @@ export default function OrbitingCirclesComp() {
                     className="size-[24px] border-none bg-transparent"
                     duration={30}
                     delay={60}
-                    radius={100}
+                    radius={120}
                     reverse
                 >
                     <SmallIcons.react />
@@ -122,7 +122,7 @@ export default function OrbitingCirclesComp() {
                     className="size-[24px] border-none bg-transparent"
                     duration={30}
                     delay={20}
-                    radius={100}
+                    radius={120}
                     reverse
                 >
                     <SmallIcons.tailwind />
@@ -140,7 +140,7 @@ export default function OrbitingCirclesComp() {
                     className="size-[24px] border-none bg-transparent"
                     duration={30}
                     delay={100}
-                    radius={120}
+                    radius={160}
                 >
                     <SmallIcons.vscode />
                 </OrbitingCircles>
@@ -148,7 +148,7 @@ export default function OrbitingCirclesComp() {
                     className="size-[24px] border-none bg-transparent"
                     duration={30}
                     delay={150}
-                    radius={140}
+                    radius={160}
                 >
                     <SmallIcons.git />
                 </OrbitingCircles>
@@ -156,7 +156,7 @@ export default function OrbitingCirclesComp() {
                     className="size-[24px] border-none bg-transparent"
                     duration={30}
                     delay={200}
-                    radius={140}
+                    radius={160}
                 >
                     <SmallIcons.python />
                 </OrbitingCircles>
