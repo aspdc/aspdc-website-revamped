@@ -66,6 +66,11 @@ const core_members: Member[] = [
         position: "Social Media Head",
         instagram: "om.kansara",
     },
+    {
+        image: "/nikita-maam.jpeg",
+        name: "Nikita Joshi",
+        position: "Faculty Mentor",
+    },
 ];
 
 const rep_members: Member[] = [
