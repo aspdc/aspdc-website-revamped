@@ -33,8 +33,6 @@ To get started with the ASPDC website locally, follow these steps:
     git clone https://github.com/aspdc/aspdc-website-revamped
     ```
 
-````
-
 2. **Navigate to the project directory:**
 
     ```bash
@@ -96,4 +94,7 @@ For any questions or issues, please contact us at [clubaspd@gmail.com](mailto:cl
 ---
 
 Thank you for your interest in the ASPDC website! We hope you find it useful and enjoyable.
-````
+
+```
+
+```
