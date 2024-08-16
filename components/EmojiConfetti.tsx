@@ -95,7 +95,7 @@ const EmojiConfetti: React.FC = () => {
                 window.removeEventListener("resize", updateCanvasSize);
             };
         }
-    }, [isExploding]);
+    }, [isExploding, emojis]);
 
     const handleClick = () => {
         setIsExploding(true);
@@ -103,7 +103,7 @@ const EmojiConfetti: React.FC = () => {
     };
 
     return (
-        <div className="relative size-16 border border-stone-700 flex justify-center items-center rounded-lg cursor-pointer group hover:border-stone-100 transition-colors">
+        <div className="size-10 sm:size-12 md:size-14 border border-stone-700 flex justify-center items-center rounded-lg cursor-pointer group hover:border-stone-100 transition-colors">
             <motion.button
                 ref={buttonRef}
                 className="opacity-70 group-hover:opacity-100 transition-opacity transform-gpu"

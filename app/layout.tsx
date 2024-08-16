@@ -45,8 +45,8 @@ const navItems = [
         link: "/leaderboard",
     },
     {
-        name: "Blog",
-        link: "https://aspdc.hashnode.dev/",
+        name: "Blogs",
+        link: "/blog",
     },
     {
         name: "Contact",
@@ -62,7 +62,7 @@ export default function RootLayout({
     return (
         <html lang="en" suppressHydrationWarning>
             <head />
-            <link rel="icon" href="/icon.ico" sizes="any" />
+            <link rel="icon" href="/icon.png" sizes="any" />
             <body
                 className={cn(
                     "min-h-screen bg-background antialiased bg-[#121212] text-white font-sans dark",

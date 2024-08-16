@@ -50,7 +50,7 @@ const AccordionItem: React.FC<AccordionItemProps> = ({
 
     return (
         <motion.div
-            className={`w-90 dark:bg-gray-800' my-4 h-full cursor-pointer select-none overflow-hidden rounded-lg border  dark:border-gray-700`}
+            className="w-full my-4 h-full cursor-pointer select-none overflow-hidden rounded-lg border border-gray-300 dark:border-gray-700"
             variants={cardVariants}
             initial="collapsed"
             animate={isExpanded ? "expanded" : "collapsed"}
@@ -84,7 +84,7 @@ const Accordion: React.FC<AccordionProps> = ({ items }) => {
     };
 
     return (
-        <div className="space-y-4">
+        <div className="space-y-2">
             {items.map((item, index) => (
                 <AccordionItem
                     key={index}
@@ -115,9 +115,9 @@ const accordionItems = [
             "Follow us on social media, join our Discord server or our whatsapp group, We'll keep you in the loop!",
     },
     {
-        title: "I'm interested in Machine Learning. Does ASPDC cover that?",
+        title: "I have a project or a blog that I want to showcase on this website",
         content:
-            "You bet! We cover a wide range of topics including AI, web dev, mobile apps, and more. If there's enough interest, we might even start a focused group!",
+            "Drop us a message on any of our socials and if it's awesome, we would love to showcase it",
     },
     {
         title: "Is there a membership fee to join ASPDC?",

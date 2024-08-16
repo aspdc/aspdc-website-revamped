@@ -6,8 +6,7 @@ import FAQ from "@/components/FAQ";
 
 //TODO
 /*
- * 2. Make pages responsive
- * 3. Create an admin page to handle adding events and all [For later]
+ * Create an admin page to handle adding events and other things
  */
 
 export default function Home() {
@@ -18,7 +17,7 @@ export default function Home() {
             <EventShowcase />
             <VelocityScroll
                 text=" Learn . Code . Innovate . "
-                className="text-7xl bg-black font-bold opacity-50"
+                className="text-2xl bg-black font-bold opacity-50 lg:text-7xl"
                 default_velocity={2}
             />
             <FAQ />

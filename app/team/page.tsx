@@ -1,7 +1,6 @@
 "use client";
 import Image from "next/image";
 import { FaInstagram, FaTwitter } from "react-icons/fa";
-import { TeamMemberCardProps } from "@/types";
 import { motion } from "framer-motion";
 
 type Member = {
@@ -28,7 +27,7 @@ const core_members: Member[] = [
     {
         image: "/nirav.jpg",
         name: "Nirav Maheta",
-        position: "Web Developement Head",
+        position: "Web Development Head",
         twitter: "ni3rav",
     },
     {
@@ -44,7 +43,7 @@ const core_members: Member[] = [
         twitter: "kushal_unjiya",
     },
     {
-        image: "https://api.dicebear.com/9.x/micah/svg?seed=Amandeep",
+        image: "/amandeep.jpeg",
         name: "Amandeep Saluja",
         position: "Public Relations",
         instagram: "amandeep_.31",
@@ -100,13 +99,13 @@ const rep_members: Member[] = [
         instagram: "deep.9549",
     },
     {
-        image: "https://api.dicebear.com/9.x/micah/svg?seed=priyanshi",
+        image: "/priyanshi.jpeg",
         name: "Priyanshi Naghera",
         position: "Public Relations",
         instagram: "prea.yanshie",
     },
     {
-        image: "https://api.dicebear.com/9.x/micah/svg?seed=vidhi",
+        image: "/vidhi.jpeg",
         name: "Vidhi Patel",
         position: "Machine Learning Lead",
         instagram: "vidhipatel8720",
@@ -154,6 +153,7 @@ const rep_members: Member[] = [
         instagram: "shriman_3",
     },
 ];
+
 function TeamMemberCard({
     image,
     name,
@@ -161,7 +161,7 @@ function TeamMemberCard({
     instagram,
     twitter,
     index,
-}: TeamMemberCardProps & { index: number }) {
+}: Member & { index: number }) {
     return (
         <motion.div
             initial={{ opacity: 0, filter: "blur(10px)", y: 50, scale: 0.9 }}
@@ -176,26 +176,26 @@ function TeamMemberCard({
                 duration: 0.5,
                 delay: index * 0.1,
             }}
-            className="h-[500px] w-80 rounded-lg border border-white/20 shadow"
+            className="h-auto w-full max-w-[320px] mx-auto rounded-lg border border-white/20 shadow"
         >
-            <div className="h-[85%] p-4">
+            <div className="aspect-[3/4] p-4">
                 <Image
                     src={image}
-                    alt="User Image"
+                    alt={`${name} - ${position}`}
                     width={500}
                     height={500}
                     className="rounded-lg h-full w-full object-cover object-center"
                 />
             </div>
-            <div className="px-4 flex items-center justify-between">
+            <div className="px-4 py-2 flex items-center justify-between">
                 <div>
-                    <h1 className="text-xl font-semibold">{name}</h1>
-                    <p className="text-sm opacity-70">{position}</p>
+                    <h1 className="text-lg sm:text-xl font-semibold">{name}</h1>
+                    <p className="text-xs sm:text-sm opacity-70">{position}</p>
                 </div>
-                <div>
+                <div className="flex gap-2 sm:gap-4">
                     {instagram && (
                         <FaInstagram
-                            size={32}
+                            size={24}
                             className="cursor-pointer hover:text-[#fd1d1d] transition-all hover:rotate-12"
                             onClick={() => {
                                 window.open(
@@ -206,8 +206,8 @@ function TeamMemberCard({
                     )}
                     {twitter && (
                         <FaTwitter
-                            size={32}
-                            className="cursor-pointer hover:text-blue-400 transition-all hover:rotate-12 "
+                            size={24}
+                            className="cursor-pointer hover:text-blue-400 transition-all hover:rotate-12"
                             onClick={() => {
                                 window.open(`https://x.com/${twitter}`);
                             }}
@@ -221,9 +221,9 @@ function TeamMemberCard({
 
 export default function Team() {
     return (
-        <div className="px-16 py-8 min-h-screen">
+        <div className="px-4 sm:px-8 md:px-16 py-8 min-h-screen">
             <motion.h1
-                className="text-4xl font-semibold mt-16"
+                className="text-3xl sm:text-4xl font-semibold mt-16"
                 initial={{
                     opacity: 0,
                     filter: "blur(10px)",
@@ -239,13 +239,13 @@ export default function Team() {
                 Core Team
             </motion.h1>
             <motion.p
-                className="opacity-50"
+                className="text-sm sm:text-base opacity-50"
                 initial={{
                     opacity: 0,
                     filter: "blur(10px)",
                 }}
                 animate={{
-                    opacity: 1,
+                    opacity: 0.7,
                     filter: "blur(0px)",
                 }}
                 transition={{
@@ -257,7 +257,7 @@ export default function Team() {
                 club&apos;s initiatives.
             </motion.p>
 
-            <div className="mt-8 lg:grid grid-cols-4 gap-y-8 mb-20">
+            <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 mb-20">
                 {core_members.map((member, index) => (
                     <TeamMemberCard
                         key={member.position}
@@ -271,7 +271,7 @@ export default function Team() {
                 ))}
             </div>
             <motion.h1
-                className="text-4xl font-semibold mt-16"
+                className="text-3xl sm:text-4xl font-semibold mt-16"
                 initial={{
                     opacity: 0,
                     filter: "blur(10px)",
@@ -285,10 +285,10 @@ export default function Team() {
                     duration: 0.5,
                 }}
             >
-                Club Representative
+                Club Representatives
             </motion.h1>
             <motion.p
-                className="opacity-50"
+                className="text-sm sm:text-base opacity-50"
                 initial={{
                     opacity: 0,
                     filter: "blur(10px)",
@@ -307,7 +307,7 @@ export default function Team() {
                 vision and the broader community.
             </motion.p>
 
-            <div className="mt-8 lg:grid grid-cols-4 gap-y-8 mb-20">
+            <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 mb-20">
                 {rep_members.map((member, index) => (
                     <TeamMemberCard
                         key={member.position}

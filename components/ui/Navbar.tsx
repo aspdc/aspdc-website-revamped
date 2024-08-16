@@ -1,9 +1,10 @@
 "use client";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
-import { FiMenu, FiX } from "react-icons/fi"; // Import icons for the mobile menu
+import { FiMenu, FiX } from "react-icons/fi";
 
 const Navbar = ({
     navItems,
@@ -83,16 +84,35 @@ const Navbar = ({
             {/* Mobile Navbar */}
             {isMobile && (
                 <>
-                    <button
-                        onClick={toggleMobileMenu}
-                        className="fixed top-4 right-4 z-[5001] bg-white dark:bg-[#0f0f0f] p-2 rounded-full shadow-lg"
-                    >
-                        {isMobileMenuOpen ? (
-                            <FiX size={24} />
-                        ) : (
-                            <FiMenu size={24} />
-                        )}
-                    </button>
+                    <div className="fixed top-0 left-0 right-0 z-[5001] bg-[#121212] border-b  border-white/10 p-2 flex justify-between items-center">
+                        <div className="flex items-center">
+                            <Image
+                                src="/logo.png"
+                                alt="ASPDC Logo"
+                                width={40}
+                                height={40}
+                            />
+                            <span className="ml-2 font-bold text-lg">
+                                ASPDC
+                            </span>
+                        </div>
+                        <button
+                            onClick={toggleMobileMenu}
+                            className="p-2 rounded-full"
+                        >
+                            {isMobileMenuOpen ? (
+                                <FiX size={24} />
+                            ) : (
+                                <FiMenu size={24} />
+                            )}
+                        </button>
+                    </div>
+                    {isMobileMenuOpen && (
+                        <div
+                            className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[4999]"
+                            onClick={toggleMobileMenu}
+                        />
+                    )}
                     <motion.div
                         className={cn(
                             "fixed top-0 right-0 h-full w-64 bg-white dark:bg-[#0f0f0f] shadow-lg z-[5000] flex flex-col p-4",

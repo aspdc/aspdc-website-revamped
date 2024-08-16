@@ -29,7 +29,7 @@ export default function Hero() {
                     className="mt-2 mb-4"
                 >
                     <motion.h1
-                        className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-semibold text-center"
+                        className="text-3xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-semibold text-center"
                         initial={{ opacity: 0, filter: "blur(10px)" }}
                         animate={{ opacity: 1, filter: "blur(0px)" }}
                         transition={{ duration: 0.5, delay: 0.2 }}
@@ -39,7 +39,7 @@ export default function Hero() {
                 </motion.div>
 
                 <motion.p
-                    className="text-center w-full sm:w-5/6 md:w-3/4 lg:w-2/3 mt-4 text-xs sm:text-sm md:text-base"
+                    className="text-center w-full sm:w-5/6 md:w-3/4 lg:w-2/3 text-xs sm:text-sm md:text-base"
                     initial={{ opacity: 0, y: 50 }}
                     animate={{ opacity: 0.7, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.4 }}

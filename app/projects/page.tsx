@@ -51,6 +51,7 @@ function ProjectCard({
                 duration: 0.5,
                 delay: index * 0.1,
             }}
+            className="w-full"
         >
             <Dialog
                 transition={{
@@ -63,14 +64,14 @@ function ProjectCard({
                     style={{
                         borderRadius: "12px",
                     }}
-                    className="flex max-w-[270px] flex-col overflow-hidden border border-zinc-950/10 bg-white dark:border-zinc-50/10 dark:bg-zinc-900"
+                    className="flex w-full flex-col overflow-hidden border border-zinc-950/10 bg-white dark:border-zinc-50/10 dark:bg-zinc-900 h-full"
                 >
                     <DialogImage
                         src={image}
                         alt="Project Image"
                         className="h-48 w-full object-cover"
                     />
-                    <div className="flex flex-grow flex-row items-end justify-between p-4">
+                    <div className="flex flex-grow flex-col justify-between p-4">
                         <div>
                             <DialogTitle className="text-zinc-950 dark:text-zinc-50 text-lg font-semibold">
                                 {projectName}
@@ -81,10 +82,10 @@ function ProjectCard({
                         </div>
                         <button
                             type="button"
-                            className="relative ml-1 flex h-6 w-6 shrink-0 scale-100 select-none appearance-none items-center justify-center rounded-lg border border-zinc-950/10 text-zinc-500 transition-colors hover:bg-zinc-100 hover:text-zinc-800 focus-visible:ring-2 active:scale-[0.98] dark:border-zinc-50/10 dark:bg-zinc-900 dark:text-zinc-500 dark:hover:bg-zinc-800 dark:hover:text-zinc-50 dark:focus-visible:ring-zinc-500"
+                            className="relative mt-4 flex h-8 w-full shrink-0 scale-100 select-none appearance-none items-center justify-center rounded-lg border border-zinc-950/10 text-zinc-500 transition-colors hover:bg-zinc-100 hover:text-zinc-800 focus-visible:ring-2 active:scale-[0.98] dark:border-zinc-50/10 dark:bg-zinc-900 dark:text-zinc-500 dark:hover:bg-zinc-800 dark:hover:text-zinc-50 dark:focus-visible:ring-zinc-500"
                             aria-label="Open dialog"
                         >
-                            <PlusIcon size={12} />
+                            <PlusIcon size={16} className="mr-2" /> View Details
                         </button>
                     </div>
                 </DialogTrigger>
@@ -93,12 +94,12 @@ function ProjectCard({
                         style={{
                             borderRadius: "24px",
                         }}
-                        className="pointer-events-auto relative flex h-auto w-full flex-col overflow-hidden border border-zinc-950/10 bg-white dark:border-zinc-50/10 dark:bg-zinc-900 sm:w-[500px]"
+                        className="pointer-events-auto relative flex h-auto w-full max-w-[90vw] flex-col overflow-hidden border border-zinc-950/10 bg-white dark:border-zinc-50/10 dark:bg-zinc-900 sm:max-w-[500px]"
                     >
                         <DialogImage
                             src={image}
                             alt="Project Image"
-                            className="max-h-[400px] max-w-[500px] object-cover object-center "
+                            className="max-h-[40vh] w-full object-cover object-center"
                         />
                         <div className="p-6">
                             <DialogTitle className="text-2xl text-zinc-950 dark:text-zinc-50">
@@ -148,17 +149,26 @@ function ProjectCard({
 
 export default function Projects() {
     const [projects, setProjects] = React.useState<ProjectProp[]>([]);
+    const [loading, setLoading] = React.useState(true);
+
     React.useEffect(() => {
         (async () => {
-            const snapshot = await getDocs(collection(db, "projects"));
-            const pr = snapshot.docs.map((doc) => doc.data());
-            setProjects(pr as ProjectProp[]);
+            try {
+                const snapshot = await getDocs(collection(db, "projects"));
+                const pr = snapshot.docs.map((doc) => doc.data());
+                setProjects(pr as ProjectProp[]);
+            } catch (error) {
+                console.error("Error fetching projects:", error);
+            } finally {
+                setLoading(false);
+            }
         })();
     }, []);
+
     return (
-        <div className="min-h-screen px-16 py-8 ">
+        <div className="min-h-screen px-4 sm:px-8 lg:px-16 py-8">
             <motion.h1
-                className="mt-16 text-4xl font-semibold"
+                className="mt-16 text-3xl sm:text-4xl font-semibold"
                 initial={{ opacity: 0, filter: "blur(10px)" }}
                 animate={{ opacity: 1, filter: "blur(0px)" }}
                 transition={{ duration: 0.5 }}
@@ -166,23 +176,28 @@ export default function Projects() {
                 Projects
             </motion.h1>
             <motion.p
-                className="text-sm opacity-75 mt-1"
+                className="text-sm sm:text-base opacity-75 mt-1"
                 initial={{ opacity: 0, filter: "blur(10px)" }}
-                animate={{ opacity: 1, filter: "blur(0px)" }}
+                animate={{ opacity: 0.7, filter: "blur(0px)" }}
                 transition={{ duration: 0.5, delay: 0.2 }}
             >
                 Witness some of the best projects created by our students
             </motion.p>
-
-            <section className="mt-8 grid grid-cols-4">
-                {projects.map((project, index) => (
-                    <ProjectCard
-                        key={project.creator}
-                        {...project}
-                        index={index}
-                    />
-                ))}
-            </section>
+            {loading ? (
+                <div className="flex justify-center items-center h-64">
+                    <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-white"></div>
+                </div>
+            ) : (
+                <section className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                    {projects.map((project, index) => (
+                        <ProjectCard
+                            key={`${project.creator}-${index}`}
+                            {...project}
+                            index={index}
+                        />
+                    ))}
+                </section>
+            )}
         </div>
     );
 }
