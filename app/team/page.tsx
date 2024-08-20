@@ -90,6 +90,7 @@ const rep_members: Member[] = [
         image: "/pratham.jpeg",
         name: "Pratham Gavadia",
         position: "DSA & CP Lead",
+        instagram: "prage_510",
     },
     {
         image: "/shivam.jpeg",
