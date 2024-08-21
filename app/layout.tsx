@@ -1,6 +1,5 @@
 import "@/styles/globals.css";
 import { Inter as FontSans } from "next/font/google";
-import { Analytics } from "@vercel/analytics/react";
 
 import { cn } from "@/lib/utils";
 import React from "react";
@@ -92,7 +91,6 @@ export default function RootLayout({
                     {children}
                     <Footer />
                 </Provider>
-                <Analytics />
             </body>
         </html>
     );

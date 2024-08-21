@@ -98,7 +98,6 @@ const rep_members: Member[] = [
         position: "DSA & CP Lead",
         instagram: "shivam_markanday",
     },
-
     {
         image: "/vidhi.jpeg",
         name: "Vidhi Patel",
