@@ -45,7 +45,7 @@ const core_members: Member[] = [
     {
         image: "/amandeep.jpeg",
         name: "Amandeep Saluja",
-        position: "Public Relations",
+        position: "Public Relations Head",
         instagram: "amandeep_.31",
     },
     {
