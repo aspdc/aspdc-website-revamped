@@ -147,6 +147,12 @@ const rep_members: Member[] = [
         instagram: "shriman_3",
     },
     {
+        image: "/nikhil.jpg",
+        name: "Nikhil Naraniya",
+        position: "Web Development Lead",
+        instagram: "ethereal.nikz01",
+    },
+    {
         image: "/deep.jpeg",
         name: "Deep Adatiya",
         position: "Public Relations",
